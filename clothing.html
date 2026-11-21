@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لَفّة | لبس ستريت وير مصري</title>
+<meta name="description" content="لَفّة — براند لبس ستريت وير مصري. تصميمات من الشارع وبالقلب.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Changa:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0d0c;
+    --ink-soft:#1a1917;
+    --paper:#f4f0e8;
+    --paper-dim:#e9e3d7;
+    --coral:#ff4d5a;
+    --coral-deep:#d92f3d;
+    --muted:#8a857c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  .container{width:min(1180px,92%);margin-inline:auto}
+  ::selection{background:var(--coral);color:#fff}
+
+  /* ===== Header ===== */
+  header{position:fixed;inset-inline:0;top:0;z-index:60;transition:.3s}
+  header.scrolled{background:rgba(14,13,12,.94);backdrop-filter:blur(8px);box-shadow:0 10px 40px rgba(0,0,0,.35)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;color:var(--paper)}
+  .logo{font-family:'Changa',sans-serif;font-weight:800;font-size:1.7rem;display:flex;align-items:center;gap:.55rem}
+  .logo .mark{
+    width:38px;height:38px;border-radius:12px;background:var(--coral);display:grid;place-items:center;
+    transform:rotate(-6deg);font-size:1.25rem;color:#fff;box-shadow:3px 3px 0 rgba(255,77,90,.35);
+  }
+  .nav-links{display:flex;gap:2rem;list-style:none;font-weight:700;font-size:.98rem}
+  .nav-links a{opacity:.85;position:relative;transition:.25s}
+  .nav-links a:hover{opacity:1;color:var(--coral)}
+  .nav-links a::after{content:"";position:absolute;bottom:-4px;right:0;height:2px;width:0;background:var(--coral);transition:.25s}
+  .nav-links a:hover::after{width:100%}
+  .cart-btn{
+    background:var(--paper);color:var(--ink);border:none;cursor:pointer;font-family:inherit;
+    font-weight:800;font-size:.92rem;padding:.55rem 1.25rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;transition:.25s;
+  }
+  .cart-btn:hover{background:var(--coral);color:#fff}
+  .cart-count{background:var(--coral);color:#fff;min-width:22px;height:22px;border-radius:50px;display:grid;place-items:center;font-size:.78rem;transition:.25s}
+  .cart-btn:hover .cart-count{background:#fff;color:var(--coral)}
+  .burger{display:none;background:none;border:none;cursor:pointer;width:42px;height:42px;z-index:70;position:relative}
+  .burger span{display:block;width:26px;height:3px;background:var(--paper);margin:5px auto;border-radius:3px;transition:.3s}
+  .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  .mobile-menu{
+    position:fixed;inset:0;background:var(--ink);z-index:65;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:1.7rem;transform:translateY(-100%);transition:transform .4s ease;
+  }
+  .mobile-menu.open{transform:translateY(0)}
+  .mobile-menu a{color:var(--paper);font-family:'Changa';font-size:1.8rem;font-weight:700}
+  .mobile-menu a:hover{color:var(--coral)}
+
+  /* ===== Hero ===== */
+  .hero{
+    min-height:100vh;background:var(--ink);color:var(--paper);
+    display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:8rem 0 0;
+  }
+  .hero::before{
+    content:"لَفّة";position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);
+    font-family:'Changa';font-weight:800;font-size:clamp(10rem,32vw,26rem);color:transparent;
+    -webkit-text-stroke:1px rgba(244,240,232,.09);letter-spacing:.05em;pointer-events:none;white-space:nowrap;
+  }
+  .hero-inner{position:relative;z-index:2;text-align:center}
+  .hero .drop-tag{
+    display:inline-block;background:var(--coral);color:#fff;font-weight:800;font-size:.85rem;
+    padding:.4rem 1.3rem;border-radius:50px;letter-spacing:.5px;transform:rotate(-2deg);
+    box-shadow:4px 4px 0 rgba(255,77,90,.3);
+  }
+  .hero h1{
+    font-family:'Changa';font-weight:800;font-size:clamp(2.6rem,7vw,5.2rem);line-height:1.15;margin:1.4rem 0 1rem;
+  }
+  .hero h1 .hl{color:var(--coral);display:inline-block;position:relative}
+  .hero p.sub{color:#b9b3a8;font-size:1.15rem;max-width:36rem;margin:0 auto}
+  .hero-actions{display:flex;gap:1rem;justify-content:center;margin-top:2.4rem;flex-wrap:wrap}
+  .btn{
+    padding:.85rem 2.2rem;border-radius:50px;font-weight:800;font-size:1rem;font-family:inherit;cursor:pointer;
+    border:2px solid transparent;transition:.25s;display:inline-flex;align-items:center;gap:.5rem;
+  }
+  .btn-coral{background:var(--coral);color:#fff}
+  .btn-coral:hover{background:var(--coral-deep);transform:translateY(-3px)}
+  .btn-outline{border-color:rgba(244,240,232,.35);color:var(--paper)}
+  .btn-outline:hover{border-color:var(--coral);color:var(--coral)}
+  .hero-cards{
+    display:grid;grid-template-columns:repeat(3,220px);gap:1.2rem;justify-content:center;margin-top:4rem;position:relative;z-index:2;
+  }
+  .hcard{
+    background:var(--ink-soft);border:1px solid rgba(244,240,232,.1);border-radius:20px;padding:1.4rem;
+    transform:translateY(30px);transition:.35s;cursor:pointer;
+  }
+  .hcard:nth-child(1){transform:rotate(-4deg) translateY(18px)}
+  .hcard:nth-child(3){transform:rotate(4deg) translateY(18px)}
+  .hcard:hover{transform:rotate(0) translateY(0);border-color:var(--coral)}
+  .hcard svg{margin-bottom:.8rem}
+  .hcard strong{font-family:'Changa';font-size:1.05rem;display:block}
+  .hcard span{color:var(--muted);font-size:.85rem}
+
+  /* ===== Marquee ===== */
+  .marquee{background:var(--coral);color:#fff;padding:.9rem 0;overflow:hidden;transform:rotate(-1.2deg) scale(1.02)}
+  .marquee-track{display:flex;gap:3rem;white-space:nowrap;animation:scroll 22s linear infinite;font-family:'Changa';font-weight:700;font-size:1.15rem;width:max-content}
+  .marquee-track span{display:flex;align-items:center;gap:3rem}
+  .marquee-track i{font-style:normal;opacity:.6}
+  @keyframes scroll{to{transform:translateX(50%)}}
+
+  /* ===== Sections ===== */
+  section{padding:6rem 0}
+  .sec-head{margin-bottom:3.2rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .sec-head .tag{
+    color:var(--coral-deep);font-weight:800;font-size:.85rem;letter-spacing:1.5px;display:inline-block;
+    border:2px solid var(--coral-deep);padding:.25rem 1rem;border-radius:50px;margin-bottom:.9rem;transform:rotate(-1deg);
+  }
+  .sec-head h2{font-family:'Changa';font-weight:800;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.2}
+  .sec-head p{color:var(--muted);max-width:30rem}
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* ===== Collection / products ===== */
+  .filters{display:flex;gap:.7rem;flex-wrap:wrap}
+  .chip{
+    border:2px solid var(--ink);background:transparent;color:var(--ink);font-family:inherit;font-weight:800;
+    padding:.45rem 1.3rem;border-radius:50px;cursor:pointer;font-size:.92rem;transition:.25s;
+  }
+  .chip:hover{border-color:var(--coral);color:var(--coral)}
+  .chip.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:2.5rem}
+  .prod{
+    background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--paper-dim);
+    transition:transform .35s, box-shadow .35s, opacity .3s;position:relative;
+  }
+  .prod:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(14,13,12,.14)}
+  .prod.hide{display:none}
+  .prod-visual{aspect-ratio:1/.92;display:grid;place-items:center;position:relative;overflow:hidden}
+  .prod-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .prod:hover .prod-visual img{transform:scale(1.06)}
+  .prod .flag{
+    position:absolute;top:1rem;right:1rem;background:var(--ink);color:var(--paper);
+    font-size:.75rem;font-weight:800;padding:.25rem .8rem;border-radius:50px;z-index:2;
+  }
+  .prod .flag.hot{background:var(--coral);color:#fff}
+  .prod-body{padding:1.3rem 1.4rem 1.5rem}
+  .prod-body .cat{font-size:.8rem;color:var(--muted);font-weight:700}
+  .prod-body h4{font-family:'Changa';font-size:1.2rem;font-weight:700;margin:.15rem 0 .5rem}
+  .prod-foot{display:flex;align-items:center;justify-content:space-between}
+  .price{font-weight:900;font-size:1.15rem}
+  .price del{color:var(--muted);font-size:.85rem;font-weight:600;margin-inline-start:.4rem}
+  .add-btn{
+    background:var(--ink);color:var(--paper);border:none;font-family:inherit;font-weight:800;font-size:.85rem;
+    padding:.5rem 1.2rem;border-radius:50px;cursor:pointer;transition:.25s;
+  }
+  .add-btn:hover{background:var(--coral)}
+  .add-btn.added{background:#2e7d46}
+
+  /* ===== Lookbook / editorial ===== */
+  .lookbook{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+  .lookbook .sec-head .tag{color:var(--coral);border-color:var(--coral)}
+  .look-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:repeat(2,240px);gap:1.2rem}
+  .look{
+    border-radius:20px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:1.6rem;
+    background:var(--ink-soft);border:1px solid rgba(244,240,232,.1);transition:.35s;cursor:pointer;
+  }
+  .look:first-child{grid-row:span 2}
+  .look:hover{border-color:var(--coral)}
+  .look .big-word{
+    position:absolute;top:.6rem;left:1rem;font-family:'Changa';font-weight:800;
+    font-size:4.5rem;color:transparent;-webkit-text-stroke:1.5px rgba(244,240,232,.22);line-height:1;pointer-events:none;
+  }
+  .look img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .look:hover img.bg{transform:scale(1.06)}
+  .look::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,13,12,.55),transparent 55%);z-index:1}
+  .look .big-word{z-index:1}
+  .look .cap{position:relative;z-index:2;background:rgba(14,13,12,.72);backdrop-filter:blur(4px);
+    padding:.55rem 1.1rem;border-radius:12px;font-weight:800;font-size:.95rem}
+
+  /* ===== Reviews ===== */
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+  .rev{
+    background:#fff;border:2px solid var(--ink);border-radius:18px;padding:1.9rem 1.7rem;position:relative;
+    box-shadow:6px 6px 0 var(--ink);transition:.25s;
+  }
+  .rev:hover{transform:translate(-3px,-3px);box-shadow:10px 10px 0 var(--coral)}
+  .rev .stars{color:#f0a020;letter-spacing:2px;margin-bottom:.8rem}
+  .rev p{font-weight:600;color:#3c3a36}
+  .rev .who{margin-top:1.2rem;display:flex;align-items:center;gap:.8rem}
+  .rev .av{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:900;color:#fff;font-size:1.05rem}
+  .rev .who strong{display:block;font-size:.95rem}
+  .rev .who span{font-size:.8rem;color:var(--muted)}
+  .rev .badge-verify{
+    position:absolute;top:1.2rem;left:1.2rem;font-size:.72rem;font-weight:800;color:#2e7d46;
+    background:#e6f4ea;padding:.2rem .7rem;border-radius:50px;
+  }
+
+  /* ===== Newsletter ===== */
+  .news{background:var(--coral);color:#fff;position:relative;overflow:hidden}
+  .news::before{
+    content:"خصم ١٥٪";position:absolute;top:1rem;left:-2rem;font-family:'Changa';font-weight:800;
+    font-size:clamp(5rem,14vw,11rem);color:rgba(255,255,255,.09);transform:rotate(-4deg);pointer-events:none;white-space:nowrap;
+  }
+  .news-inner{position:relative;z-index:2;text-align:center;max-width:620px;margin:0 auto}
+  .news h2{font-family:'Changa';font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800}
+  .news p{margin:.8rem 0 2rem;color:#ffe1e4;font-size:1.08rem}
+  .news-form{display:flex;gap:.7rem;max-width:480px;margin:0 auto}
+  .news-form input{
+    flex:1;padding:.85rem 1.3rem;border-radius:50px;border:none;font-family:inherit;font-size:1rem;outline:none;
+  }
+  .news-form input::placeholder{color:#a8a29a}
+  .news-form button{
+    background:var(--ink);color:#fff;border:none;font-family:inherit;font-weight:800;font-size:1rem;
+    padding:.85rem 1.8rem;border-radius:50px;cursor:pointer;transition:.25s;white-space:nowrap;
+  }
+  .news-form button:hover{transform:translateY(-2px)}
+  .news-ok{margin-top:1.1rem;font-weight:800;display:none}
+  .news-ok.show{display:block}
+  .news-err{margin-top:1rem;font-weight:700;color:#4d0e13;display:none}
+  .news-err.show{display:block}
+
+  /* ===== Footer ===== */
+  footer{background:var(--ink);color:#9a948a;padding:4rem 0 1.6rem}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.4rem;padding-bottom:2.6rem;border-bottom:1px solid rgba(244,240,232,.1)}
+  .foot-grid h5{color:var(--paper);font-family:'Changa';font-size:1.05rem;margin-bottom:1rem}
+  .foot-grid ul{list-style:none;display:grid;gap:.55rem;font-size:.93rem}
+  .foot-grid ul a:hover{color:var(--coral)}
+  .foot-brand p{font-size:.92rem;max-width:21rem;margin-top:.9rem}
+  .copy{text-align:center;padding-top:1.5rem;font-size:.83rem}
+
+  @media (max-width:960px){
+    .hero-cards{grid-template-columns:repeat(3,1fr);padding-inline:4%}
+    .prod-grid,.rev-grid{grid-template-columns:repeat(2,1fr)}
+    .look-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,220px)}
+    .look:first-child{grid-row:span 1;grid-column:span 2}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    .nav-links,.nav .cart-btn{display:none}
+    .burger{display:block}
+    .hero-cards{grid-template-columns:1fr;max-width:280px;margin-inline:auto;margin-top:3rem}
+    .hcard,.hcard:nth-child(1),.hcard:nth-child(3){transform:none}
+    .prod-grid,.rev-grid{grid-template-columns:1fr}
+    .look-grid{grid-template-columns:1fr;grid-template-rows:repeat(4,200px)}
+    .look:first-child{grid-column:span 1}
+    .foot-grid{grid-template-columns:1fr}
+    .news-form{flex-direction:column}
+    section{padding:4rem 0}
+    .sec-head{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container nav">
+    <a class="logo" href="#top"><span class="mark">ل</span>لَفّة</a>
+    <ul class="nav-links">
+      <li><a href="#collection">الكوليكشن</a></li>
+      <li><a href="#lookbook">اللوك بوك</a></li>
+      <li><a href="#reviews">آراء العملا</a></li>
+      <li><a href="#news">الخصومات</a></li>
+    </ul>
+    <button class="cart-btn" id="cartBtn">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 7h16l-1.5 12a2 2 0 0 1-2 1.8h-9A2 2 0 0 1 5.5 19L4 7Z" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V6a4 4 0 0 1 8 0v4" stroke="currentColor" stroke-width="1.8"/></svg>
+      السلة <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <button class="burger" id="burger" aria-label="القائمة"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#collection">الكوليكشن</a>
+  <a href="#lookbook">اللوك بوك</a>
+  <a href="#reviews">آراء العملا</a>
+  <a href="#news">الخصومات</a>
+</nav>
+
+<section class="hero" id="top">
+  <div class="container hero-inner reveal visible">
+    <span class="drop-tag">كوليكشن شتا 2026 وصل</span>
+    <h1>ستايلك هو<br><span class="hl">توقيعك</span></h1>
+    <p class="sub">لَفّة براند ستريت وير مصري بنصمم القطع اللي تحس إنها اتعملت مخصوص ليك: خامة تقيلة، قصّة مظبوطة، وتفاصيل مش هتلاقيها في حتة تانية.</p>
+    <div class="hero-actions">
+      <a class="btn btn-coral" href="#collection">شوف الكوليكشن</a>
+      <a class="btn btn-outline" href="#lookbook">اللوك بوك</a>
+    </div>
+    <div class="hero-cards">
+      <div class="hcard">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none"><path d="M6 3 2 7l3 2v12h14V9l3-2-4-4a4 4 0 0 1-6 2 4 4 0 0 1-6-2Z" stroke="#ff4d5a" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <strong>خامة قطن 100%</strong>
+        <span>جرامات تقيلة تعيش معاك سنين</span>
+      </div>
+      <div class="hcard">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5" stroke="#ff4d5a" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <strong>تصميم محدود</strong>
+        <span>كل قطعة بعدد قليل ومش بتتكرر</span>
+      </div>
+      <div class="hcard">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none"><path d="M3 12h13M3 7h9M3 17h9" stroke="#ff4d5a" stroke-width="1.7" stroke-linecap="round"/><path d="M16 8l4 4-4 4" stroke="#ff4d5a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <strong>شحن 48 ساعة</strong>
+        <span>لأي محافظة، والدفع عند الاستلام</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track" id="marquee">
+    <span>ستريت وير مصري <i>✦</i> خامة أصلية <i>✦</i> تصميم محدود <i>✦</i> دفع عند الاستلام <i>✦</i> استبدال مجاني <i>✦</i> ستريت وير مصري <i>✦</i> خامة أصلية <i>✦</i> تصميم محدود <i>✦</i> دفع عند الاستلام <i>✦</i> استبدال مجاني <i>✦</i></span>
+  </div>
+</div>
+
+<section id="collection">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="tag">الكوليكشن</span>
+        <h2>قطع الشتا الجديدة</h2>
+      </div>
+      <div class="filters" id="filters">
+        <button class="chip active" data-f="all">الكل</button>
+        <button class="chip" data-f="hoodie">هوديز</button>
+        <button class="chip" data-f="tee">تيشيرتات</button>
+        <button class="chip" data-f="pants">بناطيل</button>
+      </div>
+    </div>
+    <div class="prod-grid" id="prodGrid">
+      <article class="prod reveal" data-cat="hoodie">
+        <div class="prod-visual" style="background:linear-gradient(150deg,#f7e9e2,#efd9cd)">
+          <span class="flag hot">نافد تقريبًا</span>
+          <img src="assets/prod-hoodie-black.jpg" alt="صورة المنتج">
+        </div>
+        <div class="prod-body">
+          <span class="cat">هوديز</span>
+          <h4>هودي «وسط البلد» أوفرسايز</h4>
+          <div class="prod-foot">
+            <span class="price">750ج</span>
+            <button class="add-btn">ضيف للسلة</button>
+          </div>
+        </div>
+      </article>
+      <article class="prod reveal" data-cat="tee">
+        <div class="prod-visual" style="background:linear-gradient(150deg,#eceae4,#dcd8cd)">
+          <img src="assets/prod-tee-white.jpg" alt="صورة المنتج">
+        </div>
+        <div class="prod-body">
+          <span class="cat">تيشيرتات</span>
+          <h4>تيشيرت «مفيش مستحيل»</h4>
+          <div class="prod-foot">
+            <span class="price">350ج</span>
+            <button class="add-btn">ضيف للسلة</button>
+          </div>
+        </div>
+      </article>
+      <article class="prod reveal" data-cat="hoodie">
+        <div class="prod-visual" style="background:linear-gradient(150deg,#e4e9f2,#d3dcea)">
+          <span class="flag">جديد</span>
+          <img src="assets/prod-hoodie-navy.jpg" alt="صورة المنتج">
+        </div>
+        <div class="prod-body">
+          <span class="cat">هوديز</span>
+          <h4>هودي «سهرة» قطيفة</h4>
+          <div class="prod-foot">
+            <span class="price">820ج <del>950ج</del></span>
+            <button class="add-btn">ضيف للسلة</button>
+          </div>
+        </div>
+      </article>
+      <article class="prod reveal" data-cat="tee">
+        <div class="prod-visual" style="background:linear-gradient(150deg,#f3efe6,#e7dfce)">
+          <img src="assets/prod-tee-beige.jpg" alt="صورة المنتج">
+        </div>
+        <div class="prod-body">
+          <span class="cat">تيشيرتات</span>
+          <h4>تيشيرت «أصلي» بيج</h4>
+          <div class="prod-foot">
+            <span class="price">380ج</span>
+            <button class="add-btn">ضيف للسلة</button>
+          </div>
+        </div>
+      </article>
+      <article class="prod reveal" data-cat="pants">
+        <div class="prod-visual" style="background:linear-gradient(150deg,#e8e3ec,#d9d2e0)">
+          <span class="flag">قطع أخيرة</span>
+          <img src="assets/prod-cargo-black.jpg" alt="صورة المنتج">
+        </div>
+        <div class="prod-body">
+          <span class="cat">بناطيل</span>
+          <h4>كارجو «يوم كامل»</h4>
+          <div class="prod-foot">
+            <span class="price">650ج</span>
+            <button class="add-btn">ضيف للسلة</button>
+          </div>
+        </div>
+      </article>
+      <article class="prod reveal" data-cat="pants">
+        <div class="prod-visual" style="background:linear-gradient(150deg,#dfeee8,#cfe4da)">
+          <img src="assets/prod-jogger-olive.jpg" alt="صورة المنتج">
+        </div>
+        <div class="prod-body">
+          <span class="cat">بناطيل</span>
+          <h4>جوجير «ويك إند» زيتي</h4>
+          <div class="prod-foot">
+            <span class="price">480ج</span>
+            <button class="add-btn">ضيف للسلة</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="lookbook" id="lookbook">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="tag">اللوك بوك</span>
+        <h2>إزاي تلبسها؟</h2>
+      </div>
+      <p>أفكار تنسيق من فريقنا ومن عملا لَفّة نفسهم. ابعتلنا لوكك وهننزله هنا.</p>
+    </div>
+    <div class="look-grid">
+      <div class="look reveal">
+        <span class="big-word">01</span>
+        <img class="bg" src="assets/look-hoodie-cargo.jpg" alt="تنسيق لبس">
+        <span class="cap">هودي وسط البلد + كارجو أسود = لوك الجمعة</span>
+      </div>
+      <div class="look reveal">
+        <span class="big-word">02</span>
+        <img class="bg" src="assets/look-tee-jeans.jpg" alt="تنسيق لبس">
+        <span class="cap">تيشيرت أبيض على جينز واسع</span>
+      </div>
+      <div class="look reveal">
+        <span class="big-word">03</span>
+        <img class="bg" src="assets/look-cargo-sneakers.jpg" alt="تنسيق لبس">
+        <span class="cap">كارجو مع سنيكرز أبيض</span>
+      </div>
+      <div class="look reveal">
+        <span class="big-word">04</span>
+        <img class="bg" src="assets/look-beige.jpg" alt="تنسيق لبس">
+        <span class="cap">البيج مع البني دايمًا شغال</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="tag">آراء العملا</span>
+        <h2>كلام من ناس لبست لَفّة</h2>
+      </div>
+      <p>تقييمات حقيقية بعد الاستلام. من غير فلاتر ولا تجميل.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <span class="badge-verify">✓ شراء مؤكد</span>
+        <div class="stars">★★★★★</div>
+        <p>الهودي خامته تقيلة فعلًا مش كلام إعلانات. غسلته 4 مرات لحد دلوقتي والطباعة زي ما هي. المقاس أوفرسايز بجد فخد مقاسك العادي.</p>
+        <div class="who">
+          <span class="av" style="background:#0e0d0c">ع</span>
+          <div><strong>عمر حسانين</strong><span>اشترى هودي وسط البلد</span></div>
+        </div>
+      </div>
+      <div class="rev reveal">
+        <span class="badge-verify">✓ شراء مؤكد</span>
+        <div class="stars">★★★★★</div>
+        <p>طلبت يوم الثلاثا ووصلني الخميس. التغليف نفسه تحفة، فيه ستيكرز وكارت شكر مكتوب بخط اليد. التيشيرت قصّته مظبوطة على وصف المقاسات.</p>
+        <div class="who">
+          <span class="av" style="background:#ff4d5a">ن</span>
+          <div><strong>نورهان عادل</strong><span>اشترت تيشيرت أصلي</span></div>
+        </div>
+      </div>
+      <div class="rev reveal">
+        <span class="badge-verify">✓ شراء مؤكد</span>
+        <div class="stars">★★★★☆</div>
+        <p>الكارجو جيوبه عملية وخامته مريحة، بس كنت نفسي يبقى فيه لون رمادي. خدمة العملا ردت عليا بسرعة وقالوا اللون الجاي في الكوليكشن الجديد.</p>
+        <div class="who">
+          <span class="av" style="background:#31456b">ي</span>
+          <div><strong>يوسف سامح</strong><span>اشترى كارجو يوم كامل</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="news" id="news">
+  <div class="container news-inner reveal">
+    <h2>خصم <bdi>15%</bdi> على أول أوردر</h2>
+    <p>سيب إيميلك وهنبعتلك كود الخصم فورًا، وكمان هتعرف عن أي دروب جديد قبل ما ينزل بـ 24 ساعة.</p>
+    <form class="news-form" id="newsForm" novalidate>
+      <input type="email" id="newsEmail" placeholder="إيميلك" required>
+      <button type="submit">ابعتلي الكود</button>
+    </form>
+    <p class="news-err" id="newsErr">اكتب إيميل صحيح الأول</p>
+    <p class="news-ok" id="newsOk">تمام! الكود في طريقه لإيميلك. شوف الرسائل المزعجة لو ملقتوش.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top" style="color:var(--paper)"><span class="mark">ل</span>لَفّة</a>
+        <p>براند ستريت وير مصري اتأسس 2024. بنصمم بعدد محدود علشان اللي يلبسنا يحس إن القطعة بتاعته هو بس.</p>
+      </div>
+      <div>
+        <h5>تسوّق</h5>
+        <ul>
+          <li><a href="#collection">هوديز</a></li>
+          <li><a href="#collection">تيشيرتات</a></li>
+          <li><a href="#collection">بناطيل</a></li>
+          <li><a href="#news">العروض</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>مساعدة</h5>
+        <ul>
+          <li><a href="#">سياسة الاستبدال</a></li>
+          <li><a href="#">دليل المقاسات</a></li>
+          <li><a href="#">الشحن والتوصيل</a></li>
+          <li><a href="#">اتصل بينا</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>تابعنا</h5>
+        <ul>
+          <li><a href="#">إنستجرام — <span dir="ltr">@laffa.eg</span></a></li>
+          <li><a href="#">تيك توك — <span dir="ltr">@laffa.eg</span></a></li>
+          <li><a href="#">فيسبوك — لَفّة</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2026 لَفّة — كل الحقوق محفوظة. اتصمم واتعمل في مصر.</p>
+  </div>
+</footer>
+
+<script>
+  // Header
+  const header = document.getElementById('header');
+  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 40));
+  header.classList.toggle('scrolled', scrollY > 40);
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open'); mobileMenu.classList.remove('open');
+  }));
+
+  // Reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+
+  // Product filters
+  const chips = document.querySelectorAll('#filters .chip');
+  const prods = document.querySelectorAll('#prodGrid .prod');
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const f = chip.dataset.f;
+    prods.forEach(p => {
+      const show = f === 'all' || p.dataset.cat === f;
+      p.classList.toggle('hide', !show);
+    });
+  }));
+
+  // Cart counter
+  let cart = 0;
+  const cartCount = document.getElementById('cartCount');
+  document.querySelectorAll('.add-btn').forEach(btn => btn.addEventListener('click', () => {
+    cart++;
+    cartCount.textContent = cart;
+    btn.textContent = 'اتضاف ✓';
+    btn.classList.add('added');
+    setTimeout(() => { btn.textContent = 'ضيف للسلة'; btn.classList.remove('added'); }, 1800);
+    cartCount.style.transform = 'scale(1.4)';
+    setTimeout(() => cartCount.style.transform = '', 200);
+  }));
+
+  // Newsletter
+  const newsForm = document.getElementById('newsForm');
+  newsForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('newsEmail').value.trim();
+    const ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+    document.getElementById('newsErr').classList.toggle('show', !ok);
+    if (ok) {
+      document.getElementById('newsOk').classList.add('show');
+      newsForm.reset();
+      setTimeout(() => document.getElementById('newsOk').classList.remove('show'), 6000);
+    }
+  });
+</script>
+</body>
+</html>
